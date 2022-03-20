@@ -1,4 +1,4 @@
-data Prop = Var String | And Prop Prop | Or Prop Prop | Not Prop deriving (Eq,Show)
+{-- data Prop = Var String | And Prop Prop | Or Prop Prop | Not Prop deriving (Eq,Show)
  
 vars' :: Prop -> [String] -> [String]
 vars' (Var x) acc = if x `elem` acc then acc  else x : acc
@@ -18,12 +18,4 @@ calcValue :: Prop -> [(String,Bool)] -> Bool
 calcValue (Var x) vt = getVal x vt
 calcValue (And x y) vt = (calcValue x vt) && (calcValue y vt)
 calcValue (Or x y) vt = (calcValue x vt) || (calcValue y vt)
-calcValue (Not x) vt =  not (calcValue x vt)
-
-
-gen :: [a] -> [b] -> [[(a, b)]]
-gen []     _  = [[]]
-gen (x:xs) ys = concat[(p:) `map` gen xs ys | p <- [(x, y) | y <- ys]]
- 
-tautology :: Prop -> Bool
-tautology prop = all (flip truthValue prop) $ gen (vars prop) [True, False]
+calcValue (Not x) vt =  not (calcValue x vt) --}
