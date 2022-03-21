@@ -1,8 +1,8 @@
 data Library = Book String String | Magazine String Int Int | NewsPaper String Int Int Int deriving (Eq,Show)
 
 isPeriodic :: Library -> Bool
-isPeriodic (Book _ _)          = False
-isPeriodic (Magazine _ _ _)    = True
+isPeriodic (Book _ _) = False
+isPeriodic (Magazine _ _ _) = True
 isPeriodic (NewsPaper _ _ _ _) = True
  
 checkT :: Library -> String -> Bool
@@ -40,7 +40,7 @@ getByMonths o (m:ms) = (gM o m) ++  getByMonths o ms
  
 getAuthors :: [Library] -> [String]
 getAuthors [] = []
-{- Book - Name - Author -}
+{- Book - Название - Автор -}
 getAuthors ((Book _ a):last) = a : getAuthors last
 getAuthors ((Magazine _ _ _):last) = getAuthors last  
 getAuthors ((NewsPaper _ _ _ _):last) = getAuthors last
